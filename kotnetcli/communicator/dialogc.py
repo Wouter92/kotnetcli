@@ -117,12 +117,12 @@ class SuperNetDialogCommunicator(AbstractDialogCommunicator):
         self.update()
     
     def eventPostData(self):
-        self.elements[self.iter.next()] = self.DONE
+        self.elements[next(self.iter)] = self.DONE
         self.overal = 50
         self.update()
     
     def eventProcessData(self):
-        self.elements[self.iter.next()] = self.DONE
+        self.elements[next(self.iter)] = self.DONE
         self.overal = 80
         self.update()
 
