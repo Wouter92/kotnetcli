@@ -61,7 +61,7 @@ script:
 
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
-    - alias kcli_valid=./kotnetcli-runner.py --username dummy_user --password dummy_password
+    - alias kcli-valid=./kotnetcli-runner.py --username dummy_user --password dummy_password
     - nohup ./kotnetsrv-runner.py &>/dev/null &
     - kcli-valid -h
     - kcli-valid -c 
