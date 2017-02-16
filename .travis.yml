@@ -57,6 +57,7 @@ install:
 #    - pip install dbus-python
 
 before_script:
+    - shopt -s expand_aliases
     - alias kcli-valid="./kotnetcli-runner.py -L --username dummy_user --password dummy_password"
     - nohup ./kotnetsrv-runner.py &>/dev/null &
 
