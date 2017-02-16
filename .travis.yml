@@ -56,13 +56,15 @@ install:
     #python2-pythondialog
 #    - pip install dbus-python
 
+before_script:
+    - alias kcli-valid="./kotnetcli-runner.py -L --username dummy_user --password dummy_password"
+    - nohup ./kotnetsrv-runner.py &>/dev/null &
+
 ## command to run tests
 script:
 
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
-    - alias kcli-valid="./kotnetcli-runner.py -L --username dummy_user --password dummy_password"
-    - nohup ./kotnetsrv-runner.py &>/dev/null &
     - kcli-valid -h
     - kcli-valid -c 
     - kcli-valid -u
