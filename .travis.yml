@@ -58,6 +58,7 @@ install:
 
 ## command to run tests
 script:
+
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
     
