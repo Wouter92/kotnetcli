@@ -61,20 +61,21 @@ script:
 
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
-    
-    - ./kotnetcli-runner.py -h
-    - ./kotnetcli-runner.py -1 -c 
-    - ./kotnetcli-runner.py -1 -u
-    - ./kotnetcli-runner.py -1 -t
-    - ./kotnetcli-runner.py -1 -d
-    - ./kotnetcli-runner.py -1 -s
-    - ./kotnetcli-runner.py -1 -q
-    - ./kotnetcli-runner.py -0 -c
-    - ./kotnetcli-runner.py -0 -u
-    - ./kotnetcli-runner.py -0 -t
-    - ./kotnetcli-runner.py -0 -d
-    - ./kotnetcli-runner.py -0 -s
-    - ./kotnetcli-runner.py -0 -q
+    - alias kcli_valid=./kotnetcli-runner.py --username dummy_user --password dummy_password
+    - nohup ./kotnetsrv-runner.py &>/dev/null &
+    - kcli-valid -h
+    - kcli-valid -c 
+    - kcli-valid -u
+    - kcli-valid -t
+    - kcli-valid -d
+    - kcli-valid -s
+    - kcli-valid -q
+    #- ./kotnetcli-runner.py -c
+    #- ./kotnetcli-runner.py -u
+    #- ./kotnetcli-runner.py -t
+    #- ./kotnetcli-runner.py -d
+    #- ./kotnetcli-runner.py -s
+    #- ./kotnetcli-runner.py -q
     #- ./pyinstaller/pyinstaller.py compile-lin.spec
     #- ./dist/kotnetcli-lin -h
     #- ./dist/kotnetcli-lin -1 -c 
