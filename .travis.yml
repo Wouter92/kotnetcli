@@ -59,6 +59,7 @@ install:
 before_script:
     - shopt -s expand_aliases
     - alias kcli="./kotnetcli-runner.py -L"
+    - alias storecreds='python -c \'from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,"kuleuven")\''
     - nohup ./kotnetsrv-runner.py &>/dev/null &
 
 ## command to run tests
@@ -67,7 +68,7 @@ script:
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
     # Testing communicators with valid credentials
-    - python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds('dummy_user','dummy_password','kuleuven')"
+    - USER='dummy_user' PASS='dummy_password' storecreds
     - kcli -h
     - kcli -c 
     - kcli -u
@@ -77,7 +78,7 @@ script:
     - kcli -q
 
     # Testing communicators with invalid credentials
-    - python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds('dummy_user','invalid_password','kuleuven')"
+    - USER='dummy_user' PASS='invalid_password' storecreds
     - kcli -h
     - kcli -c 
     - kcli -u
