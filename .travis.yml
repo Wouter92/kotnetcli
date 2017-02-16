@@ -58,22 +58,22 @@ install:
 
 ## command to run tests
 script:
-    - python setup.py install
+    #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
     
-    - kotnetcli -h
-    - kotnetcli -1 -c 
-    - kotnetcli -1 -u
-    - kotnetcli -1 -t
-    - kotnetcli -1 -d
-    - kotnetcli -1 -s
-    - kotnetcli -1 -q
-    - kotnetcli -0 -c
-    - kotnetcli -0 -u
-    - kotnetcli -0 -t
-    - kotnetcli -0 -d
-    - kotnetcli -0 -s
-    - kotnetcli -0 -q
+    - ./kotnetcli-runner.py -h
+    - ./kotnetcli-runner.py -1 -c 
+    - ./kotnetcli-runner.py -1 -u
+    - ./kotnetcli-runner.py -1 -t
+    - ./kotnetcli-runner.py -1 -d
+    - ./kotnetcli-runner.py -1 -s
+    - ./kotnetcli-runner.py -1 -q
+    - ./kotnetcli-runner.py -0 -c
+    - ./kotnetcli-runner.py -0 -u
+    - ./kotnetcli-runner.py -0 -t
+    - ./kotnetcli-runner.py -0 -d
+    - ./kotnetcli-runner.py -0 -s
+    - ./kotnetcli-runner.py -0 -q
     #- ./pyinstaller/pyinstaller.py compile-lin.spec
     #- ./dist/kotnetcli-lin -h
     #- ./dist/kotnetcli-lin -1 -c 
