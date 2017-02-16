@@ -66,14 +66,25 @@ script:
 
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
+    # Testing communicators with valid credentials
     - python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds('dummy_user','dummy_password','kuleuven')"
-    - kcli-valid -h
-    - kcli-valid -c 
-    - kcli-valid -u
-    - kcli-valid -t
-    - kcli-valid -d
-    - kcli-valid -s
-    - kcli-valid -q
+    - kcli -h
+    - kcli -c 
+    - kcli -u
+    - kcli -t
+    - kcli -d
+    - kcli -s
+    - kcli -q
+
+    # Testing communicators with invalid credentials
+    - python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds('dummy_user','invalid_password','kuleuven')"
+    - kcli -h
+    - kcli -c 
+    - kcli -u
+    - kcli -t
+    - kcli -d
+    - kcli -s
+    - kcli -q
     #- ./kotnetcli-runner.py -c
     #- ./kotnetcli-runner.py -u
     #- ./kotnetcli-runner.py -t
