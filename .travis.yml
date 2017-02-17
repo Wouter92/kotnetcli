@@ -52,7 +52,7 @@ before_install:
     
 ## Command to install pip dependencies
 install: 
-    - pip install keyring colorama beautifulsoup4 argcomplete requests cursor
+    - pip install keyring-alt colorama beautifulsoup4 argcomplete requests cursor
     #python2-pythondialog
 #    - pip install dbus-python
 
@@ -68,23 +68,23 @@ script:
       #- ./kotnetcli-dummy.py --run-tests
     # Testing communicators with valid credentials
     - USER='dummy_user' PASS='dummy_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
-    - kcli -h == 0
-    - kcli -c == 0 
-    - kcli -u == 0
-    - kcli -t == 0
-    - kcli -d == 0
-    - kcli -s == 0
-    - kcli -q == 0
+    - [[ $(kcli -h) -eq 0 ]]
+    - [[ $(kcli -c) -eq 0 ]] 
+    - [[ $(kcli -u) -eq 0 ]]
+    - [[ $(kcli -t) -eq 0 ]]
+    - [[ $(kcli -d) -eq 0 ]]
+    - [[ $(kcli -s) -eq 0 ]]
+    - [[ $(kcli -q) -eq 0 ]]
 
     # Testing communicators with invalid credentials
     - USER='dummy_user' PASS='invalid_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
-    - kcli -h == 1
-    - kcli -c == 1
-    - kcli -u == 1
-    - kcli -t == 1
-    - kcli -d == 1
-    - kcli -s == 1
-    - kcli -q == 1
+    - [[ $(kcli -h) -eq 1 ]]
+    - [[ $(kcli -c) -eq 1 ]]
+    - [[ $(kcli -u) -eq 1 ]]
+    - [[ $(kcli -t) -eq 1 ]]
+    - [[ $(kcli -d) -eq 1 ]]
+    - [[ $(kcli -s) -eq 1 ]]
+    - [[ $(kcli -q) -eq 1 ]]
     #- ./kotnetcli-runner.py -c
     #- ./kotnetcli-runner.py -u
     #- ./kotnetcli-runner.py -t
