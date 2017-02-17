@@ -21,6 +21,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with kotnetcli.  If not, see <http://www.gnu.org/licenses/>.
 
+dist: trusty
 ## Moving to container-based infrastructure
 sudo: false
 
@@ -52,7 +53,7 @@ before_install:
     
 ## Command to install pip dependencies
 install: 
-    - pip install keyring keyrings.alt colorama beautifulsoup4 argcomplete requests cursor
+    - pip install keyring colorama beautifulsoup4 argcomplete requests cursor
     #python2-pythondialog
 #    - pip install dbus-python
 
