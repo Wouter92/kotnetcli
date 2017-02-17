@@ -52,7 +52,7 @@ before_install:
     
 ## Command to install pip dependencies
 install: 
-    - pip install keyring-alt colorama beautifulsoup4 argcomplete requests cursor
+    - pip install keyring.alt colorama beautifulsoup4 argcomplete requests cursor
     #python2-pythondialog
 #    - pip install dbus-python
 
