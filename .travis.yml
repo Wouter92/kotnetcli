@@ -68,23 +68,23 @@ script:
       #- ./kotnetcli-dummy.py --run-tests
     # Testing communicators with valid credentials
     - USER='dummy_user' PASS='dummy_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
-    - kcli -h
-    - kcli -c 
-    - kcli -u
-    - kcli -t
-    - kcli -d
-    - kcli -s
-    - kcli -q
+    - kcli -h == 0
+    - kcli -c == 0 
+    - kcli -u == 0
+    - kcli -t == 0
+    - kcli -d == 0
+    - kcli -s == 0
+    - kcli -q == 0
 
     # Testing communicators with invalid credentials
     - USER='dummy_user' PASS='invalid_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
-    - kcli -h
-    - kcli -c 
-    - kcli -u
-    - kcli -t
-    - kcli -d
-    - kcli -s
-    - kcli -q
+    - kcli -h == 1
+    - kcli -c == 1
+    - kcli -u == 1
+    - kcli -t == 1
+    - kcli -d == 1
+    - kcli -s == 1
+    - kcli -q == 1
     #- ./kotnetcli-runner.py -c
     #- ./kotnetcli-runner.py -u
     #- ./kotnetcli-runner.py -t
