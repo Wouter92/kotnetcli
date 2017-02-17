@@ -37,6 +37,7 @@ addons:
     - python-dbus
     - python-dbus-dev
 
+
 ## Command to install system dependencies
 before_install: 
     - git clone https://github.com/pyinstaller/pyinstaller.git
@@ -68,7 +69,7 @@ script:
     #- python setup.py install
       #- ./kotnetcli-dummy.py --run-tests
     # Testing communicators with valid credentials
-    - USER='dummy_user' PASS='dummy_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
+    - USER=dummy_user PASS=dummy_password python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
     - [ $(kcli -h) -eq "0" ]
     - [ $(kcli -c) -eq "0" ] 
     - [ $(kcli -u) -eq "0" ]
@@ -78,7 +79,7 @@ script:
     - [ $(kcli -q) -eq "0" ]
 
     # Testing communicators with invalid credentials
-    - USER='dummy_user' PASS='invalid_password' python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
+    - USER=dummy_user PASS=invalid_password python -c "from kotnetcli.credentials import KeyRingCredentials; keyring = KeyRingCredentials();keyring.storeCreds($USER,$PASS,'kuleuven')"
     - [ $(kcli -h) -eq "1" ]
     - [ $(kcli -c) -eq "1" ]
     - [ $(kcli -u) -eq "1" ]
